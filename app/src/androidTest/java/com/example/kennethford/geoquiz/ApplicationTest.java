@@ -1,4 +1,4 @@
-package com.example.tsz475.geoquiz;
+package com.example.kennethford.geoquiz;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

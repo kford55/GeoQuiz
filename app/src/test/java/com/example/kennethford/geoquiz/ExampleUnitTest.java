@@ -1,4 +1,4 @@
-package com.example.tsz475.geoquiz;
+package com.example.kennethford.geoquiz;
 
 import org.junit.Test;
 
