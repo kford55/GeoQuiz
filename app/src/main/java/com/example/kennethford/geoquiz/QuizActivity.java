@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class QuizActivity extends AppCompatActivity {
     private static final String TAG = "QuizActivity";
     private static final String KEY_INDEX = "index";
+    private static final String KEY_HAS_CHEATED = "hasCheated";
     private static final int REQUEST_CODE_CHEAT = 0;
 
     private Button mTrueButton;
@@ -33,7 +34,7 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_americas, true),
             new Question(R.string.question_asia, true)
     };
-
+    private boolean[] mHasCheatedQuestions = new boolean[mQuestionBank.length];
     private int mCurrentIndex = 0;
 
     private void updateQuestion() {
@@ -90,7 +91,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                mIsCheater = false;
+                mIsCheater = mHasCheatedQuestions[mCurrentIndex];
                 updateQuestion();
             }
         });
@@ -107,6 +108,7 @@ public class QuizActivity extends AppCompatActivity {
 
         if (savedInstanceState != null) {
             mCurrentIndex = savedInstanceState.getInt(KEY_INDEX, 0);
+            mIsCheater = savedInstanceState.getBooleanArray(KEY_HAS_CHEATED)[mCurrentIndex];
         }
 
         updateQuestion();
@@ -123,6 +125,7 @@ public class QuizActivity extends AppCompatActivity {
                 return;
             }
             mIsCheater = CheatActivity.wasAnswerShown(data);
+            mHasCheatedQuestions[mCurrentIndex] = mIsCheater;
         }
     }
 
@@ -130,6 +133,7 @@ public class QuizActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_INDEX, mCurrentIndex);
+        outState.putBooleanArray(KEY_HAS_CHEATED, mHasCheatedQuestions);
     }
 
     @Override
