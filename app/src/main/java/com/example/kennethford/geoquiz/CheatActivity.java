@@ -21,6 +21,7 @@ public class CheatActivity extends AppCompatActivity {
 
     private TextView mAnswerTextView;
     private Button mShowAnswer;
+    private TextView mBuildVersionTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,9 @@ public class CheatActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mBuildVersionTextView = (TextView) findViewById(R.id.buildVersion);
+        mBuildVersionTextView.setText("API Level " + Build.VERSION.SDK_INT);
 
     }
 
