@@ -1,5 +1,7 @@
 # Big Nerd Ranch App \#1 Geo Quiz
 
-I'm going through the Big Nerd Ranch book for Android. This is their first app.
+I'm going through the Big Nerd Ranch Book for Android Development, and keeping track of my progress in this repo.
 
-You'll find specific branches for each chapter, along with their challenges if there were any.
+#Format
+
+So as I go through the chapters I create a branch for each chapter, and then a branch for the challenges if there are any. When I'm done I rebase master off of the latest chapter branch and continue :)
